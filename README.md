@@ -26,7 +26,9 @@ brew "<formula>"
 
 ## Formulae
 
-- `betamax`
+- [`betamax`](https://www.joshka.net/betamax/) - Rust-first terminal capture CLI
+  for generating screenshots, GIFs, videos, and terminal test artifacts from tape
+  files.
 
 ## Documentation
 
