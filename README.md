@@ -2,9 +2,20 @@
 
 ## How do I install these formulae?
 
-`brew install joshka/tap/<formula>`
+Install Betamax directly from the tap:
 
-Or `brew tap joshka/tap` and then `brew install <formula>`.
+```sh
+brew trust --formula joshka/tap/betamax
+brew install joshka/tap/betamax
+```
+
+Or tap the repository first:
+
+```sh
+brew tap joshka/tap
+brew trust --formula joshka/tap/betamax
+brew install betamax
+```
 
 Or, in a `brew bundle` `Brewfile`:
 
