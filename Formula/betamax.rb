@@ -1,7 +1,6 @@
 class Betamax < Formula
   desc "Rust-first VHS-style terminal capture CLI"
   homepage "https://www.joshka.net/betamax/"
-  version "0.1.7"
   license any_of: ["MIT", "Apache-2.0"]
 
   livecheck do
@@ -12,21 +11,21 @@ class Betamax < Formula
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/joshka/betamax/releases/download/betamax-v0.1.7/betamax-0.1.7-aarch64-apple-darwin.tgz"
-      sha256 "80d9d540b421cfa289307853c91246f9bf709a7c30ccbd9f5dd8c687e7208ad3"
+      url "https://github.com/joshka/betamax/releases/download/betamax-v0.1.11/betamax-0.1.11-aarch64-apple-darwin.tgz"
+      sha256 "e67753c4e4aa281008df4fafbd74f2e0ca96b90d920486823fd8c80f88f70638"
     else
-      url "https://github.com/joshka/betamax/releases/download/betamax-v0.1.7/betamax-0.1.7-x86_64-apple-darwin.tgz"
-      sha256 "971e20fc8efcba2b9216669704ad1b106f2eb43227945b143037cf9b8e54580b"
+      url "https://github.com/joshka/betamax/releases/download/betamax-v0.1.11/betamax-0.1.11-x86_64-apple-darwin.tgz"
+      sha256 "1fe0c8482e12dbd3336622f3fae1aa17de31cf01bc168dc917de0de7c279d8a0"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
-      url "https://github.com/joshka/betamax/releases/download/betamax-v0.1.7/betamax-0.1.7-aarch64-unknown-linux-gnu.tgz"
-      sha256 "5ae4f0517ad32c6ff5a7d47bb73c8093b4cffd1ab2393ee747e3e4533c127b5e"
+      url "https://github.com/joshka/betamax/releases/download/betamax-v0.1.11/betamax-0.1.11-aarch64-unknown-linux-gnu.tgz"
+      sha256 "30354e643d73a61f3e869f797bddcd1db35d0519b9b6dd10a3c378a40464a9d8"
     else
-      url "https://github.com/joshka/betamax/releases/download/betamax-v0.1.7/betamax-0.1.7-x86_64-unknown-linux-gnu.tgz"
-      sha256 "83a22ed4b85f0ec32fffac5736cf59c6572fe46a8f8bdd927644d407aeac072f"
+      url "https://github.com/joshka/betamax/releases/download/betamax-v0.1.11/betamax-0.1.11-x86_64-unknown-linux-gnu.tgz"
+      sha256 "5fb5f09b68d1c427fcaec76d02c371698e54597e4da02d9c69f71a95a645b701"
     end
   end
 
