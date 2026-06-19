@@ -1,0 +1,4 @@
+interface:
+  display_name: "Bump Betamax Tap"
+  short_description: "Bump and ship Betamax tap formula"
+  default_prompt: "Use $bump-betamax-tap to bump Betamax in the Homebrew tap."
