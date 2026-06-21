@@ -22,7 +22,10 @@ description: Update and ship the Betamax formula in Josh's Homebrew tap. Use whe
    Prefer the repo updater when present:
 
    ```bash
-   python3 .github/scripts/bump_betamax_formula.py --version <version>
+   python3 .github/scripts/bump_formula.py \
+     --package betamax \
+     --version <version> \
+     --tag betamax-v<version>
    ```
 
    If the updater is not present on the current `main`, update only the four

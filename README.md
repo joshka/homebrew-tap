@@ -31,6 +31,34 @@ brew "<formula>"
   files.
 - [`jk`](https://github.com/joshka/jk) - Log-first terminal UI for Jujutsu.
 
+## Maintainer automation
+
+The `Bump package formula` workflow opens or updates a checked PR for supported
+formula updates.
+
+Trigger a Betamax formula update from a release workflow:
+
+```sh
+gh workflow run bump-package.yml \
+  --repo joshka/homebrew-tap \
+  --field package=betamax \
+  --field version=0.1.13 \
+  --field tag=betamax-v0.1.13
+```
+
+Trigger a jk formula update from a release workflow:
+
+```sh
+gh workflow run bump-package.yml \
+  --repo joshka/homebrew-tap \
+  --field package=jk \
+  --field version=0.2.3
+```
+
+The workflow requires `HOMEBREW_TAP_TOKEN` so the generated PR branch can run the
+normal required checks. By default it enables auto-merge on the PR after CI
+passes.
+
 ## Documentation
 
 `brew help`, `man brew` or check [Homebrew's documentation](https://docs.brew.sh).
