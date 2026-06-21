@@ -1,0 +1,94 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  updater-tests:
+    name: Updater tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out tap
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          persist-credentials: false
+
+      - name: Run updater tests
+        run: python3 -m unittest discover -s tests
+
+  workflow-and-doc-lint:
+    name: Workflow and doc lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out tap
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          persist-credentials: false
+
+      - name: Validate workflow YAML
+        run: |
+          ruby -e 'require "psych"; Dir[".github/**/*.yml"].each { |path| Psych.safe_load(File.read(path), aliases: true); puts "#{path}: ok" }'
+
+      - name: Validate formula Ruby syntax
+        run: |
+          ruby -c Formula/betamax.rb
+          ruby -c Formula/jk.rb
+
+  formula-validation:
+    name: Homebrew validation (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    env:
+      HOMEBREW_GITHUB_API_TOKEN: ${{ github.token }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - macos-15-intel
+          - macos-26
+          - ubuntu-latest
+    steps:
+      - name: Check out tap
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          persist-credentials: false
+
+      - name: Register local tap
+        if: runner.os == 'macOS'
+        run: |
+          brew untap joshka/tap || true
+          HOMEBREW_NO_AUTO_UPDATE=1 brew tap --custom-remote joshka/tap "$GITHUB_WORKSPACE"
+
+      - name: Check formula load and style
+        if: runner.os == 'macOS'
+        run: |
+          brew readall joshka/tap --no-simulate
+          brew style joshka/tap
+
+      - name: Audit formula
+        if: runner.os == 'macOS'
+        run: |
+          brew audit --strict --online joshka/tap/betamax
+          brew audit --strict --online joshka/tap/jk
+
+      - name: Check live version
+        if: runner.os == 'macOS'
+        run: |
+          brew livecheck joshka/tap/betamax
+          brew livecheck joshka/tap/jk
+
+      - name: Validate updater on Linux
+        if: runner.os == 'Linux'
+        run: |
+          python3 -m unittest discover -s tests
+          ruby -c Formula/betamax.rb
+          ruby -c Formula/jk.rb
