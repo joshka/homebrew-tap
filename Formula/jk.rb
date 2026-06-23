@@ -1,8 +1,8 @@
 class Jk < Formula
   desc "Log-first terminal UI for Jujutsu"
   homepage "https://github.com/joshka/jk"
-  url "https://static.crates.io/crates/jk/jk-0.2.2.crate"
-  sha256 "4f6f73be6acb921cee52324f18d2b7b1e8325086fb4fca0f09e0ce5a1627580a"
+  url "https://static.crates.io/crates/jk/jk-0.2.6.crate"
+  sha256 "8041f691dd70273687ebe414af89af195be7905471075cda30341ee2a9871fe7"
   license any_of: ["MIT", "Apache-2.0"]
 
   livecheck do
