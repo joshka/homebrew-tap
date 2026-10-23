@@ -11,21 +11,21 @@ class Betamax < Formula
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/joshka/betamax/releases/download/betamax-v0.2.1/betamax-0.2.1-aarch64-apple-darwin.tgz"
-      sha256 "7705ed001b759e2214850bb3c0822ebf64e625983ee8753c4c763f4a40fe4e48"
+      url "https://github.com/joshka/betamax/releases/download/betamax-v0.2.2/betamax-0.2.2-aarch64-apple-darwin.tgz"
+      sha256 "a043f74ecfcab1b34cb665defd35c0708794eeb1ba6ebbad7f28c2dd0e9b5f44"
     else
-      url "https://github.com/joshka/betamax/releases/download/betamax-v0.2.1/betamax-0.2.1-x86_64-apple-darwin.tgz"
-      sha256 "763c416276e73aa4e21e50fa10e90f4d1d563431395f2043a7790bd2a5042cb2"
+      url "https://github.com/joshka/betamax/releases/download/betamax-v0.2.2/betamax-0.2.2-x86_64-apple-darwin.tgz"
+      sha256 "0807ff7806e67b167c3e17b5c9a2c117c4b44c391ac261efe42433d1c149b3f0"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
-      url "https://github.com/joshka/betamax/releases/download/betamax-v0.2.1/betamax-0.2.1-aarch64-unknown-linux-gnu.tgz"
-      sha256 "46588bee08d32f865bb5c3b0108da885782c594e1e326dc13373f8352fad5080"
+      url "https://github.com/joshka/betamax/releases/download/betamax-v0.2.2/betamax-0.2.2-aarch64-unknown-linux-gnu.tgz"
+      sha256 "2e5ce15344bc20f98fdfe511174c6914c77f0f5056bd923befaf37bded851ae7"
     else
-      url "https://github.com/joshka/betamax/releases/download/betamax-v0.2.1/betamax-0.2.1-x86_64-unknown-linux-gnu.tgz"
-      sha256 "e0547c478366378262e528994a891d1e9d99f98d469be2489aa25bd68927a7a7"
+      url "https://github.com/joshka/betamax/releases/download/betamax-v0.2.2/betamax-0.2.2-x86_64-unknown-linux-gnu.tgz"
+      sha256 "217be876c44898b372183815fd6e68bc2e3a1a344f86d43889adfc0d3f421791"
     end
   end
 
