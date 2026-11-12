@@ -67,6 +67,11 @@ jobs:
         run: |
           brew untap joshka/tap || true
           HOMEBREW_NO_AUTO_UPDATE=1 brew tap --custom-remote joshka/tap "$GITHUB_WORKSPACE"
+          # Newer Homebrew refuses to load formulae from untrusted taps, as users see too.
+          # Older Homebrew has no trust command and loads any tap.
+          if brew trust --help >/dev/null 2>&1; then
+            brew trust --tap joshka/tap
+          fi
 
       - name: Check formula load and style
         if: runner.os == 'macOS'
